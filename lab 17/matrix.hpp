@@ -43,6 +43,13 @@
                  matrix[i][j] = b.matrix[i][j];
      }
 
+     size_t rows(const Matrix<T>& a){
+         return row;
+     }
+     size_t columns(const Matrix<T>& a){
+         return column;
+     }
+
      void set(size_t row1, size_t column1, T value)
      {
          if((row1 >= row)||(column1 >= column))

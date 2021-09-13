@@ -14,6 +14,8 @@ int main()
          Matrix<int> a (n,n);
          Matrix<int> b (n,n);
          Matrix<int> c (n,n);
+         cout<<a.columns(a)<<"\n";
+         cout<<a.rows(a)<<"\n";
          a.fill_matrix(a);
          cout<<"\nMatrix a:\n";
          a.print();
