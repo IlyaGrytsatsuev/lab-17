@@ -43,10 +43,13 @@
                  matrix[i][j] = b.matrix[i][j];
      }
 
-     size_t rows(const Matrix<T>& a){
+     size_t rows(const Matrix<T>& a) const
+     {
          return row;
      }
-     size_t columns(const Matrix<T>& a){
+     
+     size_t columns(const Matrix<T>& a) const
+     {
          return column;
      }
 
@@ -56,7 +59,8 @@
              throw "\nError!!!! You are out of rande!!!!\n";
          matrix[row1][column1] = value;
      }
-     void fill_matrix(const Matrix<T> &a)
+     
+     void fill_matrix()
      {
         for(int i = 0; i < row; i++)
             for (int j = 0; j < column; j++){
@@ -90,7 +94,7 @@
                  for (size_t j = 0; j < column; j++)
                      matrix[i][j] = b.matrix[i][j];
          }
-         return (*this);
+         return *this;
      }
 
 
@@ -103,8 +107,7 @@
          for (size_t i = 0; i < row; i++)
              for(size_t j = 0; j < column; j++)
                  result.matrix[i][j] = matrix[i][j] + b.matrix[i][j];
-         *this = result;
-         return *this;
+         return result;
      }
 
      
@@ -125,4 +128,10 @@
              cout << endl;
          }
      }
-     };
+     
+     T* & operator [](const int &index) const  
+     {
+       return  matrix [index];
+     }
+     
+ };
