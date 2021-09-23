@@ -13,7 +13,38 @@
      T **matrix;
 
  public:
-    Matrix<T>(size_t row1, size_t column1)
+    
+        class CRow {
+             friend class Matrix;
+         public:
+             T& operator[](int col)
+             {   if(col>=parent.column)
+                 throw "\nERROR! You are out the range !!!\n";
+                 return parent.matrix[rows][col];
+             }
+         private:
+            CRow(Matrix &parent_, int rows_): parent(parent_), rows(rows_)
+            {}
+
+
+             Matrix<T>& parent;
+             int rows;
+         };
+
+     Matrix<T>::CRow operator[](int rows)
+         {
+             if(rows>=row)
+                 throw "\nERROR! You are out the range !!!\n";
+             return CRow(*this, rows);
+         }
+     
+     
+     
+     
+     
+     
+     
+     Matrix<T>(size_t row1, size_t column1)
      {
          row = row1;
          column = column1;
@@ -56,7 +87,7 @@
      void set(size_t row1, size_t column1, T value)
      {
          if((row1 >= row)||(column1 >= column))
-             throw "\nError!!!! You are out of rande!!!!\n";
+             throw "\nError!!!! You are out of range!!!!\n";
          matrix[row1][column1] = value;
      }
      
@@ -72,7 +103,7 @@
      T get(size_t row1, size_t column1) const
      {
          if((row1 >= row)||(column1 >= column))
-             throw "\nError!!!! You are out of rande!!!!\n";
+             throw "\nError!!!! You are out of range!!!!\n";
          return matrix[row1][column1];
      }
 
@@ -129,9 +160,15 @@
          }
      }
      
-     T* & operator [](const int &index) const  
-     {
-       return  matrix [index];
-     }
+    // T const operator [](const pair<int,int> &index)
+    // {
+    //   if(index.first >= row || index.second >= column)
+    //       throw "\nERROR! You are out the range !!!\n";
+    //   return matrix [index.first][index.second];
+        
+    // }
+     
+     
+     
      
  };

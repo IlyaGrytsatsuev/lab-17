@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
  {
+      
      int n;
      cout<<"enter the size of matrix: ";
      cin>>n;
@@ -20,8 +21,8 @@ int main()
          
          a.fill_matrix();
          
-         cout<<"/n"<<a[0][1]<<"\n";
-         
+         //cout<<"\n"<<a[pair<int,int>(0,1)]<<"\n";
+         cout<<"\n"<<a[2][0]<<"\n";
          cout<<"\nMatrix a:\n";
          a.print();
          
@@ -51,6 +52,8 @@ int main()
          f.set_line(v,0);
          f.set_line(v,1);
          f.set_line(v,2);
+         
+         cout<<"\n"<<f[2][0]<<"\n";
          
          cout<<"\nMatrix f:\n";
          f.print();
